@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{% block titulo %} {% endblock %}</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <div class="alert alert-secondary">
+                <a class="btn btn-dark" href="/">Inicio</a>
+                &nbsp;&nbsp;
+                <a class="btn btn-dark" href="/protegido">Zona protegida</a>
+                &nbsp;&nbsp;
+                <a class="btn btn-dark" href="/protegidoAdmin">Zona protegida admin</a>
+                &nbsp;&nbsp;
+                {% if (session and session.usuario) %}
+                    <a class="btn btn-dark" href="/logout">Logout</a>
+                {% else %}
+                    <a class="btn btn-dark" href="/login">Login</a>
+                {% endif %}
+            </div>
+            {% block contenido %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
